@@ -5,9 +5,9 @@ import Link from "gatsby-link";
 
 import { rhythm } from "../utils/typography";
 
-const linkStyle = css({ float: `right` });
+const linkStyle = css({ float: `right`, textDecoration: "none", paddingRight: "1rem" });
 
-export default ({ children }) => (
+export default ({ children, data }) => (
   <g.Div
     margin={`0 auto`}
     maxWidth={700}
@@ -20,12 +20,25 @@ export default ({ children }) => (
         display={`inline-block`}
         fontStyle={`normal`}
       >
-        Pandas Eating Lots
+        {data.site.siteMetadata.title}
       </g.H3>
     </Link>
     <Link className={linkStyle} to={`/about/`}>
       About
     </Link>
+    <Link className={linkStyle} to={`/my-files/`}>
+      Files
+    </Link>
     {children()}
   </g.Div>
 );
+
+export const query = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
