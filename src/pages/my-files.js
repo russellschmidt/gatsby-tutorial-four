@@ -17,11 +17,14 @@ export default ({ data }) => {
         <tbody>
           {data.allFile.edges.map(({ node }, index) =>
             <tr key={index}>
-              <td>{node.relativePath}</td>
+              <td>
+                {node.relativePath}
+              </td>
               <td>{node.prettySize}</td>
               <td>{node.extension}</td>
               <td>{node.birthTime}</td>
             </tr>
+            
           )}
         </tbody>
       </table>
